@@ -1,13 +1,13 @@
 import { isOutdated } from "./src/compare.ts";
 
-interface pleaseUpgradeDenoOptions {
+interface ensureOptions {
   denoVersion: string;
   v8Version: string;
   typescriptVersion: string;
 }
 
-export function pleaseUpgradeDeno(
-  pleaseUpgradeDenoOptions: pleaseUpgradeDenoOptions,
+export function ensure(
+  ensureOptions: ensureOptions,
 ) {
   const { deno: currentDeno, v8: currentV8, typescript: currentTypescript } =
     Deno.version;
@@ -16,7 +16,7 @@ export function pleaseUpgradeDeno(
     denoVersion: expectedDeno,
     v8Version: expectedV8,
     typescriptVersion: expectedTypescript,
-  } = pleaseUpgradeDenoOptions;
+  } = ensureOptions;
 
   const isDenoOutdated = isOutdated(currentDeno, expectedDeno);
   const isV8Outdated = isOutdated(currentV8, expectedV8);
