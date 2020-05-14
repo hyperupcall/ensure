@@ -1,9 +1,12 @@
 import { isOutdated } from "./src/compare.ts";
 
+const warn = (type: string, current: string, expected: string) =>
+  `Your ${type} version is ${current}, but at least version ${expected} is required. Please update to a later version of Deno. Thankies!`;
+
 interface ensureOptions {
-  denoVersion: string;
-  v8Version: string;
-  typescriptVersion: string;
+  denoVersion?: string;
+  v8Version?: string;
+  typescriptVersion?: string;
 }
 
 export function ensure(
@@ -18,27 +21,28 @@ export function ensure(
     typescriptVersion: expectedTypescript,
   } = ensureOptions;
 
-  const isDenoOutdated = isOutdated(currentDeno, expectedDeno);
-  const isV8Outdated = isOutdated(currentV8, expectedV8);
-  const isTypescriptOutdated = isOutdated(
-    currentTypescript,
-    expectedTypescript,
-  );
 
-  const msg = (type: string, current: string, expected: string) =>
-    `Your ${type} version is ${current}, but at least version ${expected} is required. Please update to a later version of Deno. Thankies!`
+  let atLeastOneOutdated = false;
+  const ensureCategories = [
+    ["Deno", currentDeno, expectedDeno],
+    ["V8", currentV8, expectedV8],
+    ["Typescript", currentTypescript, expectedTypescript],
+  ];
+  for (
+    const [categoryName, currentVersion, expectedVersion] of ensureCategories
+  ) {
+    if (!categoryName || !currentVersion || !expectedVersion) return
 
-  if (isDenoOutdated) {
-    console.info(msg('Deno', currentDeno, expectedDeno));
-  }
-  if (isV8Outdated) {
-    console.info(msg('V8', currentV8, expectedV8))
-  }
-  if (isTypescriptOutdated) {
-    console.info(msg('Typescript', currentTypescript, expectedTypescript))
+    const isCategoryOutdated = isOutdated(currentVersion, expectedVersion);
+
+    if (isCategoryOutdated) {
+      console.info(warn(categoryName, currentVersion, expectedVersion));
+    }
+
+    atLeastOneOutdated = true;
   }
 
-  if (isDenoOutdated || isV8Outdated || isTypescriptOutdated) {
-    Deno.exit(1)
+  if (atLeastOneOutdated) {
+    Deno.exit(1);
   }
 }
