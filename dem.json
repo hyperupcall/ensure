@@ -5,10 +5,6 @@
       "path": "deno.land/std",
       "version": "v0.50.0",
       "files": [
-        "/fs/path.ts",
-        "/path/mod.ts",
-        "/test/assert.ts",
-        "/test/asserts.ts",
         "/testing/asserts.ts"
       ]
     }

@@ -1,3 +1,3 @@
 scripts:
-  start: deno run src/mod.ts
+  start: deno run mod.ts
   test: deno test
