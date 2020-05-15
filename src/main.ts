@@ -23,7 +23,7 @@ export function ensure(
 
 
   let atLeastOneOutdated = false;
-  const ensureCategories = [
+  const ensureCategories: ReadonlyArray<[string, string, string | undefined]> = [
     ["Deno", currentDeno, expectedDeno],
     ["V8", currentV8, expectedV8],
     ["Typescript", currentTypescript, expectedTypescript],
@@ -31,15 +31,14 @@ export function ensure(
   for (
     const [categoryName, currentVersion, expectedVersion] of ensureCategories
   ) {
-    if (!categoryName || !currentVersion || !expectedVersion) return
+    if (!expectedVersion) continue
 
     const isCategoryOutdated = isOutdated(currentVersion, expectedVersion);
 
     if (isCategoryOutdated) {
       console.info(warn(categoryName, currentVersion, expectedVersion));
+      atLeastOneOutdated = true;
     }
-
-    atLeastOneOutdated = true;
   }
 
   if (atLeastOneOutdated) {
