@@ -15,7 +15,7 @@ Deno.test({
     });
 
     const status = await proc.status()
-    await proc.close()
+    proc.close()
 
     assertEquals(status.code, 0)
   }
@@ -34,7 +34,7 @@ Deno.test({
     });
 
     const status = await proc.status()
-    await proc.close()
+    proc.close()
 
     assertEquals(status.code, 1)
   }

@@ -33,7 +33,7 @@ export function ensure(
   ) {
     if (!expectedVersion) continue
 
-    const isCategoryOutdated = isOutdated(currentVersion, expectedVersion);
+    const isCategoryOutdated = isOutdated(expectedVersion, currentVersion);
 
     if (isCategoryOutdated) {
       console.info(warn(categoryName, currentVersion, expectedVersion));
