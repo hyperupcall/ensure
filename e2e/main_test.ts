@@ -14,6 +14,7 @@ Deno.test({
       cmd: ["deno", "run", scriptName],
     });
 
+    await proc.output()
     const status = await proc.status()
     proc.close()
 
@@ -33,6 +34,7 @@ Deno.test({
       cmd: ["deno", "run", scriptName],
     });
 
+    await proc.output()
     const status = await proc.status()
     proc.close()
 
