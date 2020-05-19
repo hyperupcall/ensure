@@ -1,5 +1,7 @@
 # ensure
 
+![github workflow status (branch)](https://img.shields.io/github/workflow/status/eankeen/ensure/test/master) ![github badge](https://img.shields.io/github/license/eankeen/ensure) ![gitHub issues](https://img.shields.io/github/issues/eankeen/ensure)
+
 Ensure you are running a minimum version of Deno, Typescript, or V8
 
 ## Usage
