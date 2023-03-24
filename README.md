@@ -8,8 +8,8 @@ Ensure you are running a minimum version of Deno, Typescript, or V8
 
 > ⚠️ _Warning_ The examples in this README pull from `main`. you may want to "pin"
 > to a particular version by using git tags in the URL to direct you at a particular
-> version. For example, to use version 1.0.3 of `hyperupcall/ensure`, you would want
-> to import `https://deno.land/x/ensure@v1.0.3/mod.ts`.
+> version. For example, to use version 1.1.0 of `hyperupcall/ensure`, you would want
+> to import `https://deno.land/x/ensure@v1.1.0/mod.ts`.
 
 ## Usage
 
