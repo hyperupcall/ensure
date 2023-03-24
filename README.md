@@ -26,7 +26,7 @@ ensure({
 
 ### Versions
 
-You can ping to a specific version. Here are some examples:
+You can pin to a specific version. Here are some examples:
 
 ```sh
 # deno 1.0.3 and std v0.53.0
