@@ -1,5 +1,4 @@
-import * as path from "https://deno.land/std@v0.54.0/path/mod.ts";
-import { assertEquals } from "https://deno.land/std@v0.54.0/testing/asserts.ts";
+import { assertEquals, path } from "../deps.ts";
 
 let _dirname = path.dirname(new URL(import.meta.url).pathname);
 if (Deno.build.os == "windows") _dirname = _dirname.slice(1)
