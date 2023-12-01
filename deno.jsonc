@@ -1,13 +1,11 @@
 {
-  "tasks": {
-    "test": "deno test --allow-read --allow-write --allow-run"
-  },
-  "fmt": {
-    "options": {
-      "semiColons": false,
-      "lineWidth": 90,
-      "indentWidth": 3,
-      "singleQuote": true
-    }
-  }
+	"tasks": {
+		"test": "deno test --allow-read --allow-write --allow-run"
+	},
+	"fmt": {
+		"semiColons": false,
+		"lineWidth": 90,
+		"indentWidth": 3,
+		"singleQuote": true
+	}
 }
